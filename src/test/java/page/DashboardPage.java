@@ -21,7 +21,6 @@ public class DashboardPage {
     }
 
     public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        System.out.println("данные" + cards);
         var text = cards.findBy(attribute("data-test-id", cardInfo.getTestId())).getText();
         return extractBalance(text);
     }
