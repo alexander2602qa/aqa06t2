@@ -20,13 +20,13 @@ public class DashboardPage {
         heading.shouldBe(visible);
     }
 
-    public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        var text = cards.findBy(attribute("data-test-id", cardInfo.getTestId())).getText();
+    public int getCardBalance(String cardNumber) {
+        var text = cards.findBy(text(cardNumber.substring(15))).getText();
         return extractBalance(text);
     }
 
-    public TransferPage selectCardToTransfer(DataHelper.CardInfo cardInfo) {
-        cards.findBy(attribute("data-test-id", cardInfo.getTestId())).$("button").click();
+    public TransferPage selectCardToTransfer(String cardNumber) {
+        cards.findBy(text(cardNumber.substring(15))).$("button").click();
         return new TransferPage();
     }
 
